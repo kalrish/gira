@@ -1,0 +1,11 @@
+---
+git:
+   issue-regex: ^([a-z]+)\-?([0-9]+)[a-z]*$
+
+jira:
+   host: null
+   auth:
+      username: null
+      password: null
+
+logging: info
