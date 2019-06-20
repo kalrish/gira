@@ -81,10 +81,11 @@ def load():
         settings,
     )
 
-    logging_level = getattr(
-        logging,
-        final['logging'].upper(),
-    )
-    final['logging'] = logging_level
+    for key, value in final['logging'].items():
+        logging_level = getattr(
+            logging,
+            value.upper(),
+        )
+        final['logging'][key] = logging_level
 
     return final

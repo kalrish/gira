@@ -2,6 +2,7 @@ import argparse
 import gira.config
 import gira.cli.actions.get
 import gira.cli.actions.install
+import gira.cli.actions.refresh
 import logging
 
 
@@ -29,6 +30,8 @@ def setup_argparser(config):
             'warning',
             'error',
         ],
+        #default=config['logging']['cli'],
+        default='info',
         dest='log_level',
     )
 
@@ -42,6 +45,10 @@ def setup_argparser(config):
         config,
     )
     gira.cli.actions.install.setup(
+        subparsers,
+        config,
+    )
+    gira.cli.actions.refresh.setup(
         subparsers,
         config,
     )
@@ -66,6 +73,7 @@ def setup_logging(level):
 actions = {
     'get': gira.cli.actions.get.action,
     'install': gira.cli.actions.install.action,
+    'refresh': gira.cli.actions.refresh.action,
 }
 
 

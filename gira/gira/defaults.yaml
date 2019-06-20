@@ -8,4 +8,6 @@ jira:
       username: null
       password: null
 
-logging: info
+logging:
+   cli: warning
+   hook: info

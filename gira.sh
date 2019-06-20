@@ -7,16 +7,22 @@ function gira_get_sequence
 	
 	declare \
 		-r \
-		sequence_file_path="${HOME}/.cache/gira/${branch}" \
+		cache_home="${XDG_CACHE_HOME:-${HOME}/.cache}" \
 		#
 	
-	if exec 3< "${sequence_file_path}"
+	declare \
+		-r \
+		sequence_file_path="${cache_home}/gira/${branch}" \
+		#
+	
+	if [[ -r "${sequence_file_path}" ]]
 	then
-		read sequence <&3
+		read \
+			sequence \
+			< "${sequence_file_path}" \
+			#
 		
 		echo "${sequence}"
-		
-		exec 2>&-
 		
 		declare \
 			-i \
